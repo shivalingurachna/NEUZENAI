@@ -1,0 +1,180 @@
+@import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F5F9FF;
+    color: #64748B;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #334155;
+    font-weight: 700;
+  }
+}
+
+/* Custom Primary Brand Gradient */
+.brand-gradient {
+  background: linear-gradient(135deg, #5B8DEF 0%, #8FB3FF 100%);
+}
+
+.brand-gradient-hover:hover {
+  background: linear-gradient(135deg, #4778D4 0%, #7AA2F5 100%);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F9FF;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Glass & Card Tokens */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #E2E8F0;
+}
+
+.glass-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px 0 rgba(91, 141, 239, 0.05);
+}
+
+.glass-card:hover {
+  border-color: #5B8DEF;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -6px rgba(91, 141, 239, 0.14);
+}
+
+/* Dynamic UI Animations & Micro-Interactions */
+@keyframes animateFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes animateSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes animateScaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes animatePulseSoft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.88; }
+}
+
+.animate-fade-in {
+  animation: animateFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: animateSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: animateScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-soft {
+  animation: animatePulseSoft 2.5s ease-in-out infinite;
+}
+
+.btn-interactive {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -2px rgba(91, 141, 239, 0.25);
+}
+
+.btn-interactive:active {
+  transform: translateY(0);
+}
+
+/* Print Styles for Offer Letters & Payslips */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-content, #printable-content * {
+    visibility: visible;
+  }
+  #printable-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #FFFFFF !important;
+    color: #1E293B !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Calendar Custom Styling */
+.rbc-calendar {
+  color: #334155;
+  font-family: inherit;
+}
+.rbc-header {
+  border-bottom: 1px solid #E2E8F0 !important;
+  padding: 10px 0 !important;
+  font-weight: 600;
+  color: #5B8DEF;
+}
+.rbc-month-view, .rbc-time-view {
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+}
+.rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid #EDF2F7 !important;
+}
+.rbc-month-row + .rbc-month-row {
+  border-top: 1px solid #EDF2F7 !important;
+}
+.rbc-today {
+  background-color: #EAF2FF !important;
+}
+.rbc-off-range-bg {
+  background-color: #F5F9FF !important;
+}
+.rbc-event {
+  background-color: #5B8DEF !important;
+  border-radius: 6px;
+}
+.rbc-toolbar button {
+  color: #334155 !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 8px !important;
+  background-color: #FFFFFF !important;
+}
+.rbc-toolbar button:hover, .rbc-toolbar button.rbc-active {
+  background-color: #5B8DEF !important;
+  color: #FFFFFF !important;
+}

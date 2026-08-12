@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: neuzenai-hrms-api
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node src/app.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        value: neuzenai_super_secret_production_key_2026
