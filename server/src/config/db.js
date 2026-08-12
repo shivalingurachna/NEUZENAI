@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  const connStr = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/neuzenai_hrms';
-  try {
-    const conn = await mongoose.connect(connStr, { serverSelectionTimeoutMS: 3000 });
-    console.log(`[MongoDB Connected]: ${conn.connection.host}`);
-  } catch (error) {
-    console.warn(`[MongoDB Warning]: Local MongoDB connection failed (${error.message}). Attempting In-Memory MongoDB Fallback...`);
-    try {
-      const { MongoMemoryServer } = require('mongodb-memory-server');
-      const mongod = await MongoMemoryServer.create();
-      const memoryUri = mongod.getUri();
-      const conn = await mongoose.connect(memoryUri);
-      console.log(`[In-Memory MongoDB Connected]: ${memoryUri}`);
+  const connStr = process.env.MONGO_URI;
 
-      // Auto-run database seed for zero-config demonstration
-      const runSeedInline = require('../utils/seedInline');
-      await runSeedInline();
-    } catch (memErr) {
-      console.error(`[MongoDB Critical Error]: In-Memory Fallback failed: ${memErr.message}`);
-    }
+  if (!connStr) {
+    console.error('[MongoDB Error]: MONGO_URI is not configured.');
+    process.exit(1);
+  }
+
+  try {
+    const conn = await mongoose.connect(connStr);
+
+    console.log(`[MongoDB Connected]: ${conn.connection.host}`);
+    console.log('[MongoDB]: NEUZEN AI HRMS database connected successfully.');
+  } catch (error) {
+    console.error(`[MongoDB Error]: ${error.message}`);
+    process.exit(1);
   }
 };
 
