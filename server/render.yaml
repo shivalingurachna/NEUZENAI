@@ -6,7 +6,9 @@ services:
     buildCommand: npm install
     startCommand: node src/app.js
     envVars:
-      - key: PORT
-        value: 5000
+      - key: MONGO_URI
+        value: mongodb+srv://shivalingurachana461_db_user:rachana%40123neuzenai@r55alrw.mongodb.net/neuzenai_hrms?retryWrites=true&w=majority&appName=NEUZENAI
       - key: JWT_SECRET
         value: neuzenai_super_secret_production_key_2026
+      - key: NODE_ENV
+        value: production
